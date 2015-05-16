@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+ schemaVersion="1" creationDate="2006-07-11T11:30:47.0Z">
+  <EPCISBody>
+   <EventList>
+      <ObjectEvent>
+          <eventTime>2006-04-03T20:33:31.116-05:00</eventTime>
+          <epcList>
+              <epc>urn:epc:id:sgtin:0614141.107346.2017</epc>
+          </epcList>
+          <action>OBSERVE</action>
+          <bizStep>urn:epcglobal:epcis:bizstep:fmcg:shipped</bizStep>
+          <disposition>
+             urn:epcglobal:epcis:disp:fmcg:transit
+          </disposition>
+          <readPoint>
+              <id>urn:epc:id:sgln:0614141.07347.124</id>
+          </readPoint>
+          <bizLocation>
+              <id>urn:epc:id:sgln:0614141.33254.0</id>
+          </bizLocation>
+          <bizTransactionList>
+              <bizTransaction type="urn:epcglobal:fmcg:btt:po">
+                  http://transaction.acme.com/po/54847
+              </bizTransaction>
+          </bizTransactionList>
+      </ObjectEvent>
+      <ObjectEvent>
+          <eventTime>2006-04-04T20:33:31.116-05:00</eventTime>
+          <epcList>
+              <epc>urn:epc:id:sgtin:0614141.107346.2017</epc>
+          </epcList>
+          <action>OBSERVE</action>
+          <bizStep>urn:epcglobal:epcis:bizstep:fmcg:received</bizStep>
+          <disposition>
+              urn:epcglobal:epcis:disp:fmcg:processing
+          </disposition>
+          <readPoint>
+              <id>urn:epc:id:sgln:0614141.07473.384</id>
+          </readPoint>
+          <bizLocation>
+              <id>urn:epc:id:sgln:0614141.33482.0</id>
+          </bizLocation>
+          <bizTransactionList>
+              <bizTransaction type="urn:epcglobal:fmcg:btt:po">
+                  http://transaction.acme.com/po/54847
+              </bizTransaction>
+          </bizTransactionList>
+      </ObjectEvent>
+    </EventList>
+ </EPCISBody>
+</epcis:EPCISDocument>

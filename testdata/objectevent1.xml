@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<epcis:EPCISDocument
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+    xmlns:epcglobal="urn:epcglobal:xsd:1"
+    xsi:schemaLocation="urn:epcglobal:epcis:xsd:1 EPCglobal-epcis-1_0.xsd"
+    creationDate="2008-03-16T22:13:16.397+01:00"
+    schemaVersion="1.0">
+  <EPCISBody>
+    <EventList>
+      <ObjectEvent>
+        <eventTime>2008-03-16T22:13:16.397+01:00</eventTime>
+        <eventTimeZoneOffset>+01:00</eventTimeZoneOffset>
+        <epcList>
+          <epc>urn:epc:id:sgtin:0614141.107346.2017</epc>
+        </epcList>
+        <action>OBSERVE</action>
+        <bizStep>urn:epcglobal:epcis:bizstep:fmcg:shipped</bizStep>
+        <disposition>urn:epcglobal:epcis:disp:fmcg:unknown</disposition>
+        <readPoint>
+          <id>urn:epc:id:sgln:0614141.07346.1234</id>
+        </readPoint>
+        <bizLocation>
+          <id>urn:epcglobal:fmcg:loc:0614141073467.A23-49</id>
+        </bizLocation>
+        <bizTransactionList>
+          <bizTransaction type="urn:epcglobal:fmcg:btt:po">
+            http://transaction.acme.com/po/12345678
+          </bizTransaction>
+        </bizTransactionList>
+      </ObjectEvent>
+    </EventList>
+  </EPCISBody>
+</epcis:EPCISDocument>
