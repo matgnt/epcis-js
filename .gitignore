@@ -2,3 +2,4 @@ node_modules/
 *.swp
 *.map
 .DS_Store
+package/
