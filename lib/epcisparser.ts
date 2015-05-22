@@ -1,8 +1,8 @@
-import epcis = require('./epcis');
+import epcis = require('./epcisevents');
 var xml2js = require('xml2js');
 var assert = require('assert');
 
-export module EpcisParser {
+export module EPCIS {
 	export class EpcisParser {
 		parser: any;
 
@@ -20,7 +20,7 @@ export module EpcisParser {
 		// be aware, that it won't be the same structure, but slightly different!
 		// it should be a more JSON appropriate result
 		// especially the lists will be split into separate event objects - if possible	
-		parse(xml: string, callback: (err, res: epcis.epcis.EpcisEvent) => void): void {
+		parse(xml: string, callback: (err, res: epcis.EPCIS.EpcisEvent) => void): void {
 
 			assert.notEqual(null, this.parser, 'Parser must be initialized here!');
 			
@@ -33,7 +33,7 @@ export module EpcisParser {
 				if(objectEvent) {
 					//console.log('objectEvent:');
 					//console.log(objectEvent);
-					var oe:epcis.epcis.ObjectEvent = ref.parseObjectEvent(objectEvent);
+					var oe:epcis.EPCIS.ObjectEvent = ref.parseObjectEvent(objectEvent);
 					var msg = JSON.stringify(oe, null, 4);
 					//console.log(oe);
 					callback(null, oe);
@@ -44,8 +44,8 @@ export module EpcisParser {
 		
 
 		
-		parseObjectEvent(object: Object) : epcis.epcis.ObjectEvent {
-			var event = <epcis.epcis.ObjectEvent>this.parseEpcisEvent(object); 
+		parseObjectEvent(object: Object) : epcis.EPCIS.ObjectEvent {
+			var event = <epcis.EPCIS.ObjectEvent>this.parseEpcisEvent(object); 
 			
 			event.action = object['action'];
 			var epcL = object['epcList'];
@@ -57,8 +57,8 @@ export module EpcisParser {
 			return event;
 		}
 		
-		parseEpcisEvent(object: Object) : epcis.epcis.EpcisEvent {
-			var event = new epcis.epcis.EpcisEvent();
+		parseEpcisEvent(object: Object) : epcis.EPCIS.EpcisEvent {
+			var event = new epcis.EPCIS.EpcisEvent();
 			event.eventTime = object['eventTime'];
 			event.recordTime = object['recordTime'];
 			event.eventTimeZoneOffset = object['eventTimeZoneOffset'];

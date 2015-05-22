@@ -1,5 +1,5 @@
 
-export module EpcisEvents {
+export module EPCIS {
 	export class EpcisEvent {
 		eventTime: string;
 		recordTime: string;
