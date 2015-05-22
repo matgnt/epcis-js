@@ -1,0 +1,27 @@
+{
+  "name": "epcis-js",
+  "version": "0.1.0",
+  "description": "Library to convert EPCIS messages into JS",
+  "main": "epcis.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "assert": "^1.3.0",
+    "xml2js": "^0.4.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "EPCIS"
+  ],
+  "files": [
+    "lib/",
+    "tests/",
+    "epcis.js"
+  ],
+  "author": "Matthias Günther",
+  "license": "MIT"
+}
