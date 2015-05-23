@@ -71,15 +71,9 @@ export module EPCIS {
 				
 			}
 			event.ilmd = this.getFirstElementIfExists(object['ilmd'], undefined);
-			var bizTransactions = this.getBizTransactionList(this.getFirstElementIfExists(object['bizTransactionList'], null));
-			if(bizTransactions.length === 1) {
-				event.bizTransaction = bizTransactions[0];
-			} else if (bizTransactions.length > 1) {
-				event.bizTransactionList = bizTransactions;
-			}
 			return event;
 		}
-		
+
 		parseEpcisEvent(object: Object) : epcis.EPCIS.EpcisEvent {
 			var event = new epcis.EPCIS.EpcisEvent();
 			event.eventTime = this.getFirstElementIfExists(object['eventTime'], undefined);
@@ -89,6 +83,12 @@ export module EPCIS {
 			event.disposition = this.getFirstElementIfExists(object['disposition'], undefined);
 			event.readPoint = this.getFirstElementIdValueIfExists(object['readPoint'], undefined);
 			event.bizLocation = this.getFirstElementIdValueIfExists(object['bizLocation'], undefined);
+			var bizTransactions = this.getBizTransactionList(this.getFirstElementIfExists(object['bizTransactionList'], null));
+			if(bizTransactions.length === 1) {
+				event.bizTransaction = bizTransactions[0];
+			} else if (bizTransactions.length > 1) {
+				event.bizTransactionList = bizTransactions;
+			}
 
 			return event;
 		}

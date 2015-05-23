@@ -8,6 +8,9 @@ export module EPCIS {
 		disposition: string;
 		readPoint: string;
 		bizLocation: string;
+		bizTransaction: BizTransaction;
+		// can we really get lists here?
+		bizTransactionList: Array<BizTransaction>;
 
 		constructor() { }
 		cloneFrom(event: EpcisEvent) : void {
@@ -18,6 +21,8 @@ export module EPCIS {
 			this.disposition = event.disposition;
 			this.readPoint = event.readPoint;
 			this.bizLocation = event.bizLocation;
+			this.bizTransaction = event.bizTransaction;
+			this.bizTransactionList = event.bizTransactionList.slice(0); // make a copy
 		}
 	}
 
@@ -26,9 +31,6 @@ export module EPCIS {
 		epc: string;
 		epcList: Array<string>;
 		ilmd: string;
-		bizTransaction: BizTransaction;
-		// can we really get lists here?
-		bizTransactionList: Array<BizTransaction>;
 
 		constructor() { super(); }
 		cloneFrom(event: ObjectEvent) : void {
@@ -37,8 +39,6 @@ export module EPCIS {
 			this.epc = event.epc;
 			this.epcList = event.epcList.slice(0);	// make a copy
 			this.ilmd = event.ilmd;
-			this.bizTransaction = event.bizTransaction;
-			this.bizTransactionList = event.bizTransactionList.slice(0); // make a copy
 		}
 	}
 
