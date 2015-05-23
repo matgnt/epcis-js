@@ -26,6 +26,9 @@ export module EPCIS {
 		epc: string;
 		epcList: Array<string>;
 		ilmd: string;
+		bizTransaction: BizTransaction;
+		// can we really get lists here?
+		bizTransactionList: Array<BizTransaction>;
 
 		constructor() { super(); }
 		cloneFrom(event: ObjectEvent) : void {
@@ -34,6 +37,8 @@ export module EPCIS {
 			this.epc = event.epc;
 			this.epcList = event.epcList.slice(0);	// make a copy
 			this.ilmd = event.ilmd;
+			this.bizTransaction = event.bizTransaction;
+			this.bizTransactionList = event.bizTransactionList.slice(0); // make a copy
 		}
 	}
 
@@ -81,6 +86,12 @@ export module EPCIS {
 			super.cloneFrom(event);
 			this.ilmd = event.ilmd;
 		}
+	}
+	
+	// helper classes
+	export class BizTransaction {
+		type: string;
+		id: string;
 	}
 
 }

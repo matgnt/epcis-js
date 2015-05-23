@@ -71,7 +71,12 @@ export module EPCIS {
 				
 			}
 			event.ilmd = this.getFirstElementIfExists(object['ilmd'], undefined);
-
+			var bizTransactions = this.getBizTransactionList(object['bizTransactionList'][0]);
+			if(bizTransactions.length === 1) {
+				event.bizTransaction = bizTransactions[0];
+			} else if (bizTransactions.length > 1) {
+				event.bizTransactionList = bizTransactions;
+			}
 			return event;
 		}
 		
@@ -102,6 +107,27 @@ export module EPCIS {
 			} catch (error) {
 				return defaultValue;
 			}
+		}
+		
+		getBizTransactionList(object: Object) {
+			var result = new Array<epcis.EPCIS.BizTransaction>();
+			
+			try {
+				if(object) {
+					var transaction = object['bizTransaction'];
+					if(transaction) {
+
+						var element = new epcis.EPCIS.BizTransaction();
+						element.id = transaction[0]['_'];
+						element.type = transaction[0]['$']['type'];
+						result.push(element);
+					}
+				}
+			} catch (error) {
+				// don't do anyting. in any case of an error, the list is just empty
+			}
+			
+			return result;
 		}
 	}
 }

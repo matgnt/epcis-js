@@ -23,8 +23,8 @@ describe('epcisconverter', () => {
           assert.equal(res[0].disposition, 'urn:epcglobal:epcis:disp:fmcg:unknown');
           assert.equal(res[0].readPoint, 'urn:epc:id:sgln:0614141.07346.1234');
           assert.equal(res[0].bizLocation, 'urn:epcglobal:fmcg:loc:0614141073467.A23-49');
-          assert.equal(res[0].bizTransaction, 'http://transaction.acme.com/po/12345678');
-          assert.equal(res[0].bizTransactionType, 'urn:epcglobal:fmcg:btt:po');
+          assert.equal(res[0].bizTransaction.id, 'http://transaction.acme.com/po/12345678');
+          assert.equal(res[0].bizTransaction.type, 'urn:epcglobal:fmcg:btt:po');
           
           console.log(JSON.stringify(res, null, 4));
           done();
