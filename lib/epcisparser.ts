@@ -74,6 +74,15 @@ export module EPCIS {
 			return event;
 		}
 
+		parseAggregationEvent(object: Object) : epcis.EPCIS.AggregationEvent {
+			var event = <epcis.EPCIS.AggregationEvent>this.parseEpcisEvent(object);
+
+			event.action = this.getFirstElementIfExists(object['action'], undefined);
+			event.parentID = this.getFirstElementIfExists(object['parentID'], undefined);
+			return event;
+		}
+
+
 		parseEpcisEvent(object: Object) : epcis.EPCIS.EpcisEvent {
 			var event = new epcis.EPCIS.EpcisEvent();
 			event.eventTime = this.getFirstElementIfExists(object['eventTime'], undefined);
