@@ -14,7 +14,7 @@ describe('epcisconverter', () => {
         var parser = new myparser.EPCIS.EpcisParser();
         parser.parse(xml, function(err, res) {
           assert.equal(null, err);
-          assert.equal(res.action, 'OBSERVE');
+          assert.equal(res[0].action, 'OBSERVE');
           console.log(JSON.stringify(res, null, 4));
           done();
         });
@@ -24,10 +24,24 @@ describe('epcisconverter', () => {
         var parser = new myparser.EPCIS.EpcisParser();
         parser.parse(xml, function(err, res) {
           assert.equal(null, err);
-          assert.equal(res.action, 'OBSERVE');
+          assert.equal(res[0].action, 'OBSERVE');
           console.log(JSON.stringify(res, null, 4));
           done();
         });
     });
+    
+    it('load commisioning events', (done) => {
+      var xml = fs.readFileSync(__dirname + '/../testdata/1_case_commissioning_events.xml');
+      var parser = new myparser.EPCIS.EpcisParser();
+      parser.parse(xml, function (err, res) {
+        assert.equal(null, err);
+        assert.ok(res.length > 0, "We should have more than 0 events in our list!")
+        console.log(JSON.stringify(res, null, 4));
+        done();
+      })
+      
+      
+    });
+    
   });
 });

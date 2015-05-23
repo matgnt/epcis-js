@@ -8,10 +8,13 @@ export module EPCIS {
 
 		constructor() {
 			// options to parse the EPCIS xml structure into JS
+			// we need all attributes to e.g. get the bizLocation tyepes
+			// use array in all cases, that we just have one way to handle events
+			// instead of checking for a possible occuring array all the time
 			var parserOptions = {
 				'trim': true,
-				'ignoreAttrs': true,
-				'explicitArray': false
+				'ignoreAttrs': false,
+				'explicitArray': true
 			};
 			this.parser = new xml2js.Parser(parserOptions);
 		}
@@ -20,7 +23,7 @@ export module EPCIS {
 		// be aware, that it won't be the same structure, but slightly different!
 		// it should be a more JSON appropriate result
 		// especially the lists will be split into separate event objects - if possible	
-		parse(xml: string, callback: (err, res: epcis.EPCIS.EpcisEvent) => void): void {
+		parse(xml: string, callback: (err, res: epcis.EPCIS.EpcisEvent[]) => void): void {
 
 			assert.notEqual(null, this.parser, 'Parser must be initialized here!');
 			
@@ -29,14 +32,18 @@ export module EPCIS {
 				assert.equal(null, err, 'Parsing XML data failed!');
 	        
 				// we only care for events
-				var objectEvent = result['epcis:EPCISDocument']['EPCISBody']['EventList']['ObjectEvent'];
-				if(objectEvent) {
+				var objectEvents = result['epcis:EPCISDocument']['EPCISBody'][0]['EventList'][0]['ObjectEvent'];
+				if(objectEvents) {
 					//console.log('objectEvent:');
 					//console.log(objectEvent);
-					var oe:epcis.EPCIS.ObjectEvent = ref.parseObjectEvent(objectEvent);
+					var events:epcis.EPCIS.ObjectEvent[] = [];
+					for(var i=0; i<objectEvents.length; i++) {
+						var oe:epcis.EPCIS.ObjectEvent = ref.parseObjectEvent(objectEvents[i]);
+						events.push(oe);
+					}
 					var msg = JSON.stringify(oe, null, 4);
 					//console.log(oe);
-					callback(null, oe);
+					callback(null, events);
 					
 				}
 			});
@@ -47,27 +54,43 @@ export module EPCIS {
 		parseObjectEvent(object: Object) : epcis.EPCIS.ObjectEvent {
 			var event = <epcis.EPCIS.ObjectEvent>this.parseEpcisEvent(object); 
 			
-			event.action = object['action'];
-			var epcL = object['epcList'];
+			event.action = this.getFirstElementIfExists(object['action'], undefined);
+			var epcL = this.getFirstElementIfExists(object['epcList'], undefined);
 			if(epcL) {
-				event.epc = epcL['epc'];
+				event.epc = this.getFirstElementIdValueIfExists(object['epc'], undefined);
 			}
-			event.ilmd = object['ilmd'];
+			event.ilmd = this.getFirstElementIfExists(object['ilmd'], undefined);
 
 			return event;
 		}
 		
 		parseEpcisEvent(object: Object) : epcis.EPCIS.EpcisEvent {
 			var event = new epcis.EPCIS.EpcisEvent();
-			event.eventTime = object['eventTime'];
-			event.recordTime = object['recordTime'];
-			event.eventTimeZoneOffset = object['eventTimeZoneOffset'];
-			event.bizStep = object['bizStep'];
-			event.disposition = object['disposition'];
-			event.readPoint = object['readPoint'];
-			event.bizLocation = object['bizLocation'];
+			event.eventTime = this.getFirstElementIfExists(object['eventTime'], undefined);
+			event.recordTime = this.getFirstElementIfExists(object['recordTime'], undefined);
+			event.eventTimeZoneOffset = this.getFirstElementIfExists(object['eventTimeZoneOffset'], undefined);
+			event.bizStep = this.getFirstElementIfExists(object['bizStep'], undefined);
+			event.disposition = this.getFirstElementIfExists(object['disposition'], undefined);
+			event.readPoint = this.getFirstElementIdValueIfExists(object['readPoint'], undefined);
+			event.bizLocation = this.getFirstElementIdValueIfExists(object['bizLocation'], undefined);
 
 			return event;
+		}
+		
+		getFirstElementIfExists(object: Object, defaultValue: Object) {
+			try {
+				return object[0];
+			} catch (error) {
+				return defaultValue;
+			}
+		}
+		
+		getFirstElementIdValueIfExists(object: Object, defaultValue: Object) {
+			try {
+				return object[0]["id"][0];
+			} catch (error) {
+				return defaultValue;
+			}
 		}
 	}
 }
