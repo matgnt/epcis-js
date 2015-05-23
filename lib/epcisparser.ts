@@ -71,21 +71,13 @@ export module EPCIS {
 			var event = <epcis.EPCIS.ObjectEvent>this.parseEpcisEvent(object); 
 			
 			event.action = this.getFirstElementIfExists(object['action'], undefined);
-			var epcL = this.getFirstElementIfExists(object['epcList'], null);
-			if(epcL) {
-				var epcs = epcL["epc"]; 
-				if(epcs) {
-					// does it exist at all?
-					if (epcs.length > 2) {
-						// it's a list
-						event.epcList = epcs;
-					} else {
-						// pick the first element
-						event.epc = this.getFirstElementIfExists(epcs, undefined);
-					}
-				}
-				
+			var epcs = this.getEpcList(object['epcList']);
+			if(epcs.length === 1) {
+				event.epc = epcs [0];
+			} else if(epcs.length > 1) {
+				event.epcList = epcs;
 			}
+
 			event.ilmd = this.getFirstElementIfExists(object['ilmd'], undefined);
 			return event;
 		}
