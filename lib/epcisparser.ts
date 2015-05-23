@@ -154,5 +154,16 @@ export module EPCIS {
 			
 			return result;
 		}
+
+		getEpcList(object: Object): Array<string> {
+			var result:Array<string> = new Array<string>();
+			try {
+				result = object[0]['epc'];
+			} catch (error) {
+
+			}
+
+			return result;
+		}
 	}
 }
