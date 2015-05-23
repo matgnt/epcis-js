@@ -24,6 +24,7 @@ export module EPCIS {
 	export class ObjectEvent extends EpcisEvent {
 		action: string;
 		epc: string;
+		epcList: Array<string>;
 		ilmd: string;
 
 		constructor() { super(); }
@@ -31,6 +32,7 @@ export module EPCIS {
 			super.cloneFrom(event);
 			this.action = event.action;
 			this.epc = event.epc;
+			this.epcList = event.epcList.slice(0);	// make a copy
 			this.ilmd = event.ilmd;
 		}
 	}
