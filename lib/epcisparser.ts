@@ -95,6 +95,7 @@ export module EPCIS {
 
 			event.action = this.getFirstElementIfExists(object['action'], undefined);
 			event.parentID = this.getFirstElementIfExists(object['parentID'], undefined);
+			event.childEPCs = this.getEpcList(object['childEPCs']);
 			return event;
 		}
 
