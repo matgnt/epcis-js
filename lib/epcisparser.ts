@@ -32,7 +32,12 @@ export module EPCIS {
 				assert.equal(null, err, 'Parsing XML data failed!');
 	        
 				// we only care for events
-				var objectEvents = result['epcis:EPCISDocument']['EPCISBody'][0]['EventList'][0]['ObjectEvent'];
+				var eventList = ref.getFirstElementIfExists(result['epcis:EPCISDocument']['EPCISBody'][0]['EventList'], null);
+
+				//var fs = require('fs');
+				//fs.writeFile('tmp2.json', JSON.stringify(eventList, null, 4));
+
+				var objectEvents = eventList['ObjectEvent'];
 				if(objectEvents) {
 					//console.log('objectEvent:');
 					//console.log(objectEvent);
@@ -46,7 +51,18 @@ export module EPCIS {
 					callback(null, events);
 					
 				}
+
+				var aggregationEvents = eventList['AggregationEvent'];
+				if(aggregationEvents) {
+					var aggregations:Array<epcis.EPCIS.AggregationEvent> = new Array<epcis.EPCIS.AggregationEvent>();
+					for(var i=0; i < aggregationEvents.length; i++) {
+						var ev = ref.parseAggregationEvent(aggregationEvents[i]);
+						aggregations.push(ev);
+					}
+					callback(null, aggregations);
+				}
 			});
+
 		}
 		
 
