@@ -1,0 +1,504 @@
+{
+    "AggregationEvent": [
+        {
+            "eventTime": [
+                "2006-06-25T03:51:00Z"
+            ],
+            "eventTimeZoneOffset": [
+                "-06:00"
+            ],
+            "parentID": [
+                "urn:epc:id:sscc:0614141.0000000001"
+            ],
+            "childEPCs": [
+                {
+                    "epc": [
+                        "urn:epc:id:sgtin:0614141.107340.1",
+                        "urn:epc:id:sgtin:0614141.107340.2",
+                        "urn:epc:id:sgtin:0614141.107340.3",
+                        "urn:epc:id:sgtin:0614141.107340.4",
+                        "urn:epc:id:sgtin:0614141.107340.5",
+                        "urn:epc:id:sgtin:0614141.107340.6",
+                        "urn:epc:id:sgtin:0614141.107340.7",
+                        "urn:epc:id:sgtin:0614141.107340.8",
+                        "urn:epc:id:sgtin:0614141.107340.9",
+                        "urn:epc:id:sgtin:0614141.107340.10"
+                    ]
+                }
+            ],
+            "action": [
+                "ADD"
+            ],
+            "bizStep": [
+                "urn:epcglobal:hls:bizstep:casetopalletaggregation"
+            ],
+            "disposition": [
+                "urn:epcglobal:hls:disp:active"
+            ],
+            "readPoint": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.RP-1"
+                    ]
+                }
+            ],
+            "bizLocation": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.1"
+                    ]
+                }
+            ]
+        },
+        {
+            "eventTime": [
+                "2006-06-25T03:52:00Z"
+            ],
+            "eventTimeZoneOffset": [
+                "-06:00"
+            ],
+            "parentID": [
+                "urn:epc:id:sscc:0614141.0000000002"
+            ],
+            "childEPCs": [
+                {
+                    "epc": [
+                        "urn:epc:id:sgtin:0614141.107341.1",
+                        "urn:epc:id:sgtin:0614141.107341.2",
+                        "urn:epc:id:sgtin:0614141.107341.3",
+                        "urn:epc:id:sgtin:0614141.107341.4",
+                        "urn:epc:id:sgtin:0614141.107341.5",
+                        "urn:epc:id:sgtin:0614141.107341.6",
+                        "urn:epc:id:sgtin:0614141.107341.7",
+                        "urn:epc:id:sgtin:0614141.107341.8",
+                        "urn:epc:id:sgtin:0614141.107341.9",
+                        "urn:epc:id:sgtin:0614141.107341.10"
+                    ]
+                }
+            ],
+            "action": [
+                "ADD"
+            ],
+            "bizStep": [
+                "urn:epcglobal:hls:bizstep:casetopalletaggregation"
+            ],
+            "disposition": [
+                "urn:epcglobal:hls:disp:active"
+            ],
+            "readPoint": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.RP-1"
+                    ]
+                }
+            ],
+            "bizLocation": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.1"
+                    ]
+                }
+            ]
+        },
+        {
+            "eventTime": [
+                "2006-06-25T03:53:00Z"
+            ],
+            "eventTimeZoneOffset": [
+                "-06:00"
+            ],
+            "parentID": [
+                "urn:epc:id:sscc:0614141.0000000003"
+            ],
+            "childEPCs": [
+                {
+                    "epc": [
+                        "urn:epc:id:sgtin:0614141.107342.1",
+                        "urn:epc:id:sgtin:0614141.107342.2",
+                        "urn:epc:id:sgtin:0614141.107342.3",
+                        "urn:epc:id:sgtin:0614141.107342.4",
+                        "urn:epc:id:sgtin:0614141.107342.5",
+                        "urn:epc:id:sgtin:0614141.107342.6",
+                        "urn:epc:id:sgtin:0614141.107342.7",
+                        "urn:epc:id:sgtin:0614141.107342.8",
+                        "urn:epc:id:sgtin:0614141.107342.9",
+                        "urn:epc:id:sgtin:0614141.107342.10"
+                    ]
+                }
+            ],
+            "action": [
+                "ADD"
+            ],
+            "bizStep": [
+                "urn:epcglobal:hls:bizstep:casetopalletaggregation"
+            ],
+            "disposition": [
+                "urn:epcglobal:hls:disp:active"
+            ],
+            "readPoint": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.RP-1"
+                    ]
+                }
+            ],
+            "bizLocation": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.1"
+                    ]
+                }
+            ]
+        },
+        {
+            "eventTime": [
+                "2006-06-25T03:54:00Z"
+            ],
+            "eventTimeZoneOffset": [
+                "-06:00"
+            ],
+            "parentID": [
+                "urn:epc:id:sscc:0614141.0000000004"
+            ],
+            "childEPCs": [
+                {
+                    "epc": [
+                        "urn:epc:id:sgtin:0614141.107343.1",
+                        "urn:epc:id:sgtin:0614141.107343.2",
+                        "urn:epc:id:sgtin:0614141.107343.3",
+                        "urn:epc:id:sgtin:0614141.107343.4",
+                        "urn:epc:id:sgtin:0614141.107343.5",
+                        "urn:epc:id:sgtin:0614141.107343.6",
+                        "urn:epc:id:sgtin:0614141.107343.7",
+                        "urn:epc:id:sgtin:0614141.107343.8",
+                        "urn:epc:id:sgtin:0614141.107343.9",
+                        "urn:epc:id:sgtin:0614141.107343.10"
+                    ]
+                }
+            ],
+            "action": [
+                "ADD"
+            ],
+            "bizStep": [
+                "urn:epcglobal:hls:bizstep:casetopalletaggregation"
+            ],
+            "disposition": [
+                "urn:epcglobal:hls:disp:active"
+            ],
+            "readPoint": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.RP-1"
+                    ]
+                }
+            ],
+            "bizLocation": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.1"
+                    ]
+                }
+            ]
+        },
+        {
+            "eventTime": [
+                "2006-06-25T03:55:00Z"
+            ],
+            "eventTimeZoneOffset": [
+                "-06:00"
+            ],
+            "parentID": [
+                "urn:epc:id:sscc:0614141.0000000005"
+            ],
+            "childEPCs": [
+                {
+                    "epc": [
+                        "urn:epc:id:sgtin:0614141.107344.1",
+                        "urn:epc:id:sgtin:0614141.107344.2",
+                        "urn:epc:id:sgtin:0614141.107344.3",
+                        "urn:epc:id:sgtin:0614141.107344.4",
+                        "urn:epc:id:sgtin:0614141.107344.5",
+                        "urn:epc:id:sgtin:0614141.107344.6",
+                        "urn:epc:id:sgtin:0614141.107344.7",
+                        "urn:epc:id:sgtin:0614141.107344.8",
+                        "urn:epc:id:sgtin:0614141.107344.9",
+                        "urn:epc:id:sgtin:0614141.107344.10"
+                    ]
+                }
+            ],
+            "action": [
+                "ADD"
+            ],
+            "bizStep": [
+                "urn:epcglobal:hls:bizstep:casetopalletaggregation"
+            ],
+            "disposition": [
+                "urn:epcglobal:hls:disp:active"
+            ],
+            "readPoint": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.RP-1"
+                    ]
+                }
+            ],
+            "bizLocation": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.1"
+                    ]
+                }
+            ]
+        },
+        {
+            "eventTime": [
+                "2006-06-25T03:56:00Z"
+            ],
+            "eventTimeZoneOffset": [
+                "-06:00"
+            ],
+            "parentID": [
+                "urn:epc:id:sscc:0614142.0000000006"
+            ],
+            "childEPCs": [
+                {
+                    "epc": [
+                        "urn:epc:id:sgtin:0614142.107345.1",
+                        "urn:epc:id:sgtin:0614142.107345.2",
+                        "urn:epc:id:sgtin:0614142.107345.3",
+                        "urn:epc:id:sgtin:0614142.107345.4",
+                        "urn:epc:id:sgtin:0614142.107345.5",
+                        "urn:epc:id:sgtin:0614142.107345.6",
+                        "urn:epc:id:sgtin:0614142.107345.7",
+                        "urn:epc:id:sgtin:0614142.107345.8",
+                        "urn:epc:id:sgtin:0614142.107345.9",
+                        "urn:epc:id:sgtin:0614142.107345.10"
+                    ]
+                }
+            ],
+            "action": [
+                "ADD"
+            ],
+            "bizStep": [
+                "urn:epcglobal:hls:bizstep:casetopalletaggregation"
+            ],
+            "disposition": [
+                "urn:epcglobal:hls:disp:active"
+            ],
+            "readPoint": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.RP-1"
+                    ]
+                }
+            ],
+            "bizLocation": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.1"
+                    ]
+                }
+            ]
+        },
+        {
+            "eventTime": [
+                "2006-06-25T03:57:00Z"
+            ],
+            "eventTimeZoneOffset": [
+                "-06:00"
+            ],
+            "parentID": [
+                "urn:epc:id:sscc:0614142.0000000007"
+            ],
+            "childEPCs": [
+                {
+                    "epc": [
+                        "urn:epc:id:sgtin:0614142.107346.1",
+                        "urn:epc:id:sgtin:0614142.107346.2",
+                        "urn:epc:id:sgtin:0614142.107346.3",
+                        "urn:epc:id:sgtin:0614142.107346.4",
+                        "urn:epc:id:sgtin:0614142.107346.5",
+                        "urn:epc:id:sgtin:0614142.107346.6",
+                        "urn:epc:id:sgtin:0614142.107346.7",
+                        "urn:epc:id:sgtin:0614142.107346.8",
+                        "urn:epc:id:sgtin:0614142.107346.9",
+                        "urn:epc:id:sgtin:0614142.107346.10"
+                    ]
+                }
+            ],
+            "action": [
+                "ADD"
+            ],
+            "bizStep": [
+                "urn:epcglobal:hls:bizstep:casetopalletaggregation"
+            ],
+            "disposition": [
+                "urn:epcglobal:hls:disp:active"
+            ],
+            "readPoint": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.RP-1"
+                    ]
+                }
+            ],
+            "bizLocation": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.1"
+                    ]
+                }
+            ]
+        },
+        {
+            "eventTime": [
+                "2006-06-25T03:58:00Z"
+            ],
+            "eventTimeZoneOffset": [
+                "-06:00"
+            ],
+            "parentID": [
+                "urn:epc:id:sscc:0614142.0000000008"
+            ],
+            "childEPCs": [
+                {
+                    "epc": [
+                        "urn:epc:id:sgtin:0614142.107347.1",
+                        "urn:epc:id:sgtin:0614142.107347.2",
+                        "urn:epc:id:sgtin:0614142.107347.3",
+                        "urn:epc:id:sgtin:0614142.107347.4",
+                        "urn:epc:id:sgtin:0614142.107347.5",
+                        "urn:epc:id:sgtin:0614142.107347.6",
+                        "urn:epc:id:sgtin:0614142.107347.7",
+                        "urn:epc:id:sgtin:0614142.107347.8",
+                        "urn:epc:id:sgtin:0614142.107347.9",
+                        "urn:epc:id:sgtin:0614142.107347.10"
+                    ]
+                }
+            ],
+            "action": [
+                "ADD"
+            ],
+            "bizStep": [
+                "urn:epcglobal:hls:bizstep:casetopalletaggregation"
+            ],
+            "disposition": [
+                "urn:epcglobal:hls:disp:active"
+            ],
+            "readPoint": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.RP-1"
+                    ]
+                }
+            ],
+            "bizLocation": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.1"
+                    ]
+                }
+            ]
+        },
+        {
+            "eventTime": [
+                "2006-06-25T03:59:00Z"
+            ],
+            "eventTimeZoneOffset": [
+                "-06:00"
+            ],
+            "parentID": [
+                "urn:epc:id:sscc:0614142.0000000009"
+            ],
+            "childEPCs": [
+                {
+                    "epc": [
+                        "urn:epc:id:sgtin:0614142.107348.1",
+                        "urn:epc:id:sgtin:0614142.107348.2",
+                        "urn:epc:id:sgtin:0614142.107348.3",
+                        "urn:epc:id:sgtin:0614142.107348.4",
+                        "urn:epc:id:sgtin:0614142.107348.5",
+                        "urn:epc:id:sgtin:0614142.107348.6",
+                        "urn:epc:id:sgtin:0614142.107348.7",
+                        "urn:epc:id:sgtin:0614142.107348.8",
+                        "urn:epc:id:sgtin:0614142.107348.9",
+                        "urn:epc:id:sgtin:0614142.107348.10"
+                    ]
+                }
+            ],
+            "action": [
+                "ADD"
+            ],
+            "bizStep": [
+                "urn:epcglobal:hls:bizstep:casetopalletaggregation"
+            ],
+            "disposition": [
+                "urn:epcglobal:hls:disp:active"
+            ],
+            "readPoint": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.RP-1"
+                    ]
+                }
+            ],
+            "bizLocation": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.1"
+                    ]
+                }
+            ]
+        },
+        {
+            "eventTime": [
+                "2006-06-25T04:00:00Z"
+            ],
+            "eventTimeZoneOffset": [
+                "-06:00"
+            ],
+            "parentID": [
+                "urn:epc:id:sscc:0614142.0000000010"
+            ],
+            "childEPCs": [
+                {
+                    "epc": [
+                        "urn:epc:id:sgtin:0614142.107349.1",
+                        "urn:epc:id:sgtin:0614142.107349.2",
+                        "urn:epc:id:sgtin:0614142.107349.3",
+                        "urn:epc:id:sgtin:0614142.107349.4",
+                        "urn:epc:id:sgtin:0614142.107349.5",
+                        "urn:epc:id:sgtin:0614142.107349.6",
+                        "urn:epc:id:sgtin:0614142.107349.7",
+                        "urn:epc:id:sgtin:0614142.107349.8",
+                        "urn:epc:id:sgtin:0614142.107349.9",
+                        "urn:epc:id:sgtin:0614142.107349.10"
+                    ]
+                }
+            ],
+            "action": [
+                "ADD"
+            ],
+            "bizStep": [
+                "urn:epcglobal:hls:bizstep:casetopalletaggregation"
+            ],
+            "disposition": [
+                "urn:epcglobal:hls:disp:active"
+            ],
+            "readPoint": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.RP-1"
+                    ]
+                }
+            ],
+            "bizLocation": [
+                {
+                    "id": [
+                        "urn:epcglobal:fmcg:loc:0614141073467.1"
+                    ]
+                }
+            ]
+        }
+    ]
+}
