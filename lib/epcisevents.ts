@@ -44,15 +44,22 @@ export module EPCIS {
 
 	export class AggregationEvent extends EpcisEvent {
 		action: string;
-		// childQuantity
 		parentID: string;
-		// childEPCs
+		// In an aggregation event it makes sense to keep lists because it'll
+		// always be multiple items
+		childEPCs: Array<string>;
+		// Both "child" fields can be set.
+		// The "quantity" field is just something like e.g. a batch where
+		// you often don't have a unique EPC as an identifier.
+		childQuantity: Array<Quantity>;
 	
 		constructor() { super(); }
 		cloneFrom(event: AggregationEvent) : void {
 			super.cloneFrom(event);
 			this.action = event.action;
 			this.parentID = event.parentID;
+			this.childEPCs = event.childEPCs.slice(0);
+			this.childQuantity = event.childQuantity.slice(0);
 		}
 
 	}
