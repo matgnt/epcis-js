@@ -61,6 +61,17 @@ export module EPCIS {
 					}
 					callback(null, aggregations);
 				}
+
+				var transactionEvents = eventList['TransactionEvent'];
+				if(transactionEvents) {
+					var transactions:Array<epcis.EPCIS.TransactionEvent> = new Array<epcis.EPCIS.TransactionEvent>();
+					for(var i=0; i < transactionEvents.length; i++) {
+						var trans = ref.parseTransactionEvent(transactionEvents[i]);
+						transactions.push(trans);
+					}
+					callback(null, transactions);
+				}
+
 			});
 
 		}
@@ -92,6 +103,23 @@ export module EPCIS {
 			return event;
 		}
 
+		parseTransactionEvent(object: Object) : epcis.EPCIS.TransactionEvent {
+			var event = <epcis.EPCIS.TransactionEvent>this.parseEpcisEvent(object);
+
+			event.action = this.getFirstElementIfExists(object['action'], undefined);
+			event.parentID = this.getFirstElementIfExists(object['parentID'], undefined);
+			event.quantityList = this.getQuantityList(object['quantityList']);
+
+			// TODO: not sure if we can keep this single vs. multiple EPCs...
+			var epcs = this.getEpcList(object['epcList']);
+			if(epcs.length === 1) {
+				event.epc = epcs[0];
+			} else if(epcs.length > 1) {
+				event.epcList = epcs;
+			}
+
+			return event;
+		}
 
 		parseEpcisEvent(object: Object) : epcis.EPCIS.EpcisEvent {
 			var event = new epcis.EPCIS.EpcisEvent();
