@@ -133,6 +133,15 @@ export module EPCIS {
 		*/
 		unit: string;
 
+		// Convenient fucntion since we "renamed" the field from the specification
+		// since no one knows what "uom" actually means...
+		uom(): string {
+			return this.unit;
+		}
+		setUom(value: string): void {
+			this.unit = value;
+		}
+
 		// convenient function to get the 2 fields together (as it is
 		// described in the EPCIS standard)
 		epcClass(): string {
