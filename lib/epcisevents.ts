@@ -66,9 +66,9 @@ export module EPCIS {
 
 	export class TransactionEvent extends EpcisEvent {
 		action: string;
-		// bizTransactionList
 		epc: string;
-		// quantityList
+		epcList: Array<string>;
+		quantityList: Array<Quantity>;
 		parentID: string;
 
 		constructor() { super(); }
@@ -76,6 +76,12 @@ export module EPCIS {
 			super.cloneFrom(event);
 			this.action = event.action;
 			this.epc = event.epc;
+			if(event.epcList) {
+				this.epcList = event.epcList.slice(0);
+			}
+			if(event.quantityList) {
+				this.quantityList = event.quantityList.slice(0);
+			}
 			this.parentID = event.parentID;
 		}
 	}
