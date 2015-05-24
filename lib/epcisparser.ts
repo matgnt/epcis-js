@@ -88,6 +88,7 @@ export module EPCIS {
 			event.action = this.getFirstElementIfExists(object['action'], undefined);
 			event.parentID = this.getFirstElementIfExists(object['parentID'], undefined);
 			event.childEPCs = this.getEpcList(object['childEPCs']);
+			event.childQuantityList = this.getQuantityList(object['childQuantityList']);
 			return event;
 		}
 
@@ -156,6 +157,26 @@ export module EPCIS {
 
 			}
 
+			return result;
+		}
+
+		// TODO: Check error handling.
+		// Currently the whole list is empty if a parsing erro, e.g. quantity, occurs.
+		getQuantityList(object: Object): Array<epcis.EPCIS.Quantity> {
+			var result:Array<epcis.EPCIS.Quantity> = new Array<epcis.EPCIS.Quantity>();
+			try {
+				var quantityElements = object[0]['quantityElement'];
+				quantityElements.forEach(function(element) {
+					var item:epcis.EPCIS.Quantity = new epcis.EPCIS.Quantity();
+					item.setEpcClass(this.getFirstElementIfExists(element['epcClass']));
+					item.quantity = parseFloat(this.getFirstElementIfExists(element['quantity']));
+					item.unit = this.getFirstElementIfExists(element['uom']);
+
+					result.push(item);
+				}, this);
+			} catch (error) {
+
+			}
 			return result;
 		}
 	}
