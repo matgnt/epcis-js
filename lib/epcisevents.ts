@@ -51,7 +51,7 @@ export module EPCIS {
 		// Both "child" fields can be set.
 		// The "quantity" field is just something like e.g. a batch where
 		// you often don't have a unique EPC as an identifier.
-		childQuantity: Array<Quantity>;
+		childQuantityList: Array<Quantity>;
 	
 		constructor() { super(); }
 		cloneFrom(event: AggregationEvent) : void {
@@ -59,7 +59,7 @@ export module EPCIS {
 			this.action = event.action;
 			this.parentID = event.parentID;
 			this.childEPCs = event.childEPCs.slice(0);
-			this.childQuantity = event.childQuantity.slice(0);
+			this.childQuantityList = event.childQuantityList.slice(0);
 		}
 
 	}
