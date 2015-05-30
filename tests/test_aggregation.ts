@@ -5,7 +5,7 @@ var fs = require('fs');
 
 describe('Aggregation events with quantity list', () => {
 
-    var events:Array<eventtypes.EPCIS.EpcisEvent>;
+    var events:eventtypes.EPCIS.Events;
     
     before(function () {
         var xml = fs.readFileSync(__dirname + '/../testdata/AggregationEvents.xml');
@@ -17,28 +17,28 @@ describe('Aggregation events with quantity list', () => {
     });
     
     it('basic parsing', (done) => {
-		assert.ok(events.length === 2);
+		assert.ok(events.aggregationEvents.length === 2);
         done();
     });
 
     it('check childEPCs', (done) => {
-		assert.ok(events[0].childEPCs.length === 3);
-        assert.equal(events[0].childEPCs[0], 'urn:epc:id:sgtin:0614141.107340.1');
-        assert.equal(events[0].childEPCs[2], 'urn:epc:id:sgtin:0614141.107340.3');
+		assert.ok(events.aggregationEvents[0].childEPCs.length === 3);
+        assert.equal(events.aggregationEvents[0].childEPCs[0], 'urn:epc:id:sgtin:0614141.107340.1');
+        assert.equal(events.aggregationEvents[0].childEPCs[2], 'urn:epc:id:sgtin:0614141.107340.3');
         done();
     });
 
     it('check first quantity', (done) => {
-		assert.ok(events[1].childEPCs.length === 0);
-        assert.equal(events[1].childQuantityList[0].quantity, 1000);
-        assert.equal(events[1].childQuantityList[0].type, 'urn:epc:idpat:sgtin');
-        assert.equal(events[1].childQuantityList[0].identifier, 'mypart');
+		assert.ok(events.aggregationEvents[1].childEPCs.length === 0);
+        assert.equal(events.aggregationEvents[1].childQuantityList[0].quantity, 1000);
+        assert.equal(events.aggregationEvents[1].childQuantityList[0].type, 'urn:epc:idpat:sgtin');
+        assert.equal(events.aggregationEvents[1].childQuantityList[0].identifier, 'mypart');
         done();
     });
     it('check quantity with unit', (done) => {
-        assert.equal(events[1].childQuantityList[1].identifier, 'mystuff');
-        assert.equal(events[1].childQuantityList[1].quantity, 5);
-        assert.equal(events[1].childQuantityList[1].unit, 'KGM');
+        assert.equal(events.aggregationEvents[1].childQuantityList[1].identifier, 'mystuff');
+        assert.equal(events.aggregationEvents[1].childQuantityList[1].quantity, 5);
+        assert.equal(events.aggregationEvents[1].childQuantityList[1].unit, 'KGM');
         done();
     });
     
