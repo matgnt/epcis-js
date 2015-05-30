@@ -23,7 +23,8 @@
   "files": [
     "lib/",
     "tests/",
-    "epcis.js"
+    "epcis.js",
+    "epcis.ts"
   ],
   "author": "Matthias Günther",
   "license": "MIT"
