@@ -1,5 +1,5 @@
 import epcisparser = require('./lib/epcisparser');
+import epcisevents = require('./lib/epcisevents');
 
-export module EPCIS {
-	function dummy() {};
+export module EPCIS {	
 }
