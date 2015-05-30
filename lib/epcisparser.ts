@@ -28,14 +28,14 @@ export module EPCIS {
 			assert.notEqual(null, this.parser, 'Parser must be initialized here!');
 			
 			var ref = this; // how to handle this scope issue???
-			this.parser.parseString(xml, function(err, result) {
+			this.parser.parseString(xml, function(err, data) {
 				assert.equal(null, err, 'Parsing XML data failed!');
 
 				// result
-				var resutl:epcis.EPCIS.Events = new epcis.EPCIS.Events();
+				var result:epcis.EPCIS.Events = new epcis.EPCIS.Events();
 
 				// we only care for events
-				var eventList = ref.getFirstElementIfExists(result['epcis:EPCISDocument']['EPCISBody'][0]['EventList'], null);
+				var eventList = ref.getFirstElementIfExists(data['epcis:EPCISDocument']['EPCISBody'][0]['EventList'], null);
 
 				//var fs = require('fs');
 				//fs.writeFile('tmp2.json', JSON.stringify(eventList, null, 4));
