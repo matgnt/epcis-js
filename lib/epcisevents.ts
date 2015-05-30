@@ -1,5 +1,14 @@
 
 export module EPCIS {
+	export class Events {
+		objectEvents: Array<ObjectEvent>;
+		aggregationEvents: Array<AggregationEvent>;
+		transactionEvents: Array<TransactionEvent>;
+		transformationEvents: Array<TransformationEvent>;
+
+		constructor() {}
+	}
+
 	export class EpcisEvent {
 		eventTime: string;
 		recordTime: string;

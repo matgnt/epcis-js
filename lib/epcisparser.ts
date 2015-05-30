@@ -23,14 +23,17 @@ export module EPCIS {
 		// be aware, that it won't be the same structure, but slightly different!
 		// it should be a more JSON appropriate result
 		// especially the lists will be split into separate event objects - if possible	
-		parse(xml: string, callback: (err, res: epcis.EPCIS.EpcisEvent[]) => void): void {
+		parse(xml: string, callback: (err, res: epcis.EPCIS.Events) => void): void {
 
 			assert.notEqual(null, this.parser, 'Parser must be initialized here!');
 			
 			var ref = this; // how to handle this scope issue???
 			this.parser.parseString(xml, function(err, result) {
 				assert.equal(null, err, 'Parsing XML data failed!');
-	        
+
+				// result
+				var resutl:epcis.EPCIS.Events = new epcis.EPCIS.Events();
+
 				// we only care for events
 				var eventList = ref.getFirstElementIfExists(result['epcis:EPCISDocument']['EPCISBody'][0]['EventList'], null);
 
@@ -48,7 +51,7 @@ export module EPCIS {
 					}
 					var msg = JSON.stringify(oe, null, 4);
 					//console.log(oe);
-					callback(null, events);
+					result.objectEvents = events;
 					
 				}
 
@@ -59,7 +62,7 @@ export module EPCIS {
 						var ev = ref.parseAggregationEvent(aggregationEvents[i]);
 						aggregations.push(ev);
 					}
-					callback(null, aggregations);
+					result.aggregationEvents = aggregations;
 				}
 
 				var transactionEvents = eventList['TransactionEvent'];
@@ -69,8 +72,10 @@ export module EPCIS {
 						var trans = ref.parseTransactionEvent(transactionEvents[i]);
 						transactions.push(trans);
 					}
-					callback(null, transactions);
+					result.transactionEvents = transactions;
 				}
+				
+				callback(null, result);
 
 			});
 
