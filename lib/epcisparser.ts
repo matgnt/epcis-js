@@ -1,6 +1,6 @@
 import epcis = require('./epcisevents');
-var xml2js = require('xml2js');
-var assert = require('assert');
+import xml2js = require('xml2js');
+import assert = require('assert');
 
 export module EPCIS {
 	export class EpcisParser {
