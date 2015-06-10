@@ -10,6 +10,7 @@ export module EPCIS {
 	}
 
 	export class EpcisEvent {
+		type: string;
 		eventTime: string;
 		recordTime: string;
 		eventTimeZoneOffset: string;
@@ -21,8 +22,12 @@ export module EPCIS {
 		// can we really get lists here?
 		bizTransactionList: Array<BizTransaction>;
 
-		constructor() { }
+		constructor() {
+			this.type = 'EpcisEvent';
+		}
+
 		cloneFrom(event: EpcisEvent) : void {
+			this.type = event.type;
 			this.eventTime = event.eventTime;
 			this.recordTime = event.recordTime;
 			this.eventTimeZoneOffset = event.eventTimeZoneOffset;
@@ -41,7 +46,11 @@ export module EPCIS {
 		epcList: Array<string>;
 		ilmd: string;
 
-		constructor() { super(); }
+		constructor() {
+			super();
+			this.type = 'ObjectEvent';
+		}
+
 		cloneFrom(event: ObjectEvent) : void {
 			super.cloneFrom(event);
 			this.action = event.action;
@@ -62,7 +71,11 @@ export module EPCIS {
 		// you often don't have a unique EPC as an identifier.
 		childQuantityList: Array<Quantity>;
 	
-		constructor() { super(); }
+		constructor() {
+			super();
+			this.type = 'AggregationEvent';
+		}
+
 		cloneFrom(event: AggregationEvent) : void {
 			super.cloneFrom(event);
 			this.action = event.action;
@@ -80,7 +93,11 @@ export module EPCIS {
 		quantityList: Array<Quantity>;
 		parentID: string;
 
-		constructor() { super(); }
+		constructor() {
+			super();
+			this.type = 'TransactionEvent';
+		}
+
 		cloneFrom(event: TransactionEvent) : void {
 			super.cloneFrom(event);
 			this.action = event.action;
@@ -103,7 +120,11 @@ export module EPCIS {
 		// outputQuantityList
 		transformationID: string;
 
-		constructor() { super(); }
+		constructor() {
+			super();
+			this.type = 'TransformationEvent';
+		}
+
 		cloneFrom(event: TransformationEvent) : void {
 			super.cloneFrom(event);
 			this.ilmd = event.ilmd;
