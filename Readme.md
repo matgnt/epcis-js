@@ -4,15 +4,6 @@ EPCIS, Electronic Product Code Information Services, RFID, GS1
 # Introduction
 This is a Node.js libary to parse EPCIS documents. We try to translate it into a more useful javascript structure.
 
-The implementation is based on Typescript. To start development run:
-
-```
-npm install     # installs the dependencies
-grunt           # runs the tsc compiler
-```
-
-This will watch the *.ts files and compile them into *.js files
-
 ## What is EPCIS
 For more information checkout the following links:
 
@@ -73,3 +64,23 @@ Why     | *BusinessStepID*                          | *DispositionID*
         | *BusinessTransactionList, Source/Destination, ILMD*
 
 
+# Development
+The implementation is based on Typescript. To start development run:
+
+```
+npm install     # installs the dependencies
+grunt           # runs the tsc compiler
+```
+
+This will watch the *.ts files and compile them into *.js files
+
+## Tests
+```
+mocha tests/test_aggregation.js
+```
+
+## Debugging
+```
+mocha --debug-brk tests/test_aggregation.js
+```
+Then attach a debugger, e.g. Visual Studio Code.
