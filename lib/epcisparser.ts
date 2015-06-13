@@ -84,7 +84,7 @@ export module EPCIS {
 
 		
 		parseObjectEvent(object: Object) : epcis.EPCIS.ObjectEvent {
-			var event = <epcis.EPCIS.ObjectEvent>this.parseEpcisEvent(object); 
+			var event = <epcis.EPCIS.ObjectEvent>this.parseEpcisEvent(object, new epcis.EPCIS.ObjectEvent());
 			
 			event.action = this.getFirstElementIfExists(object['action'], undefined);
 			var epcs = this.getEpcList(object['epcList']);
@@ -99,7 +99,7 @@ export module EPCIS {
 		}
 
 		parseAggregationEvent(object: Object) : epcis.EPCIS.AggregationEvent {
-			var event = <epcis.EPCIS.AggregationEvent>this.parseEpcisEvent(object);
+			var event = <epcis.EPCIS.AggregationEvent>this.parseEpcisEvent(object, new epcis.EPCIS.AggregationEvent());
 
 			event.action = this.getFirstElementIfExists(object['action'], undefined);
 			event.parentID = this.getFirstElementIfExists(object['parentID'], undefined);
@@ -109,7 +109,7 @@ export module EPCIS {
 		}
 
 		parseTransactionEvent(object: Object) : epcis.EPCIS.TransactionEvent {
-			var event = <epcis.EPCIS.TransactionEvent>this.parseEpcisEvent(object);
+			var event = <epcis.EPCIS.TransactionEvent>this.parseEpcisEvent(object, new epcis.EPCIS.TransactionEvent());
 
 			event.action = this.getFirstElementIfExists(object['action'], undefined);
 			event.parentID = this.getFirstElementIfExists(object['parentID'], undefined);
@@ -126,8 +126,7 @@ export module EPCIS {
 			return event;
 		}
 
-		parseEpcisEvent(object: Object) : epcis.EPCIS.EpcisEvent {
-			var event = new epcis.EPCIS.EpcisEvent();
+		parseEpcisEvent(object: Object, event:epcis.EPCIS.EpcisEvent) : epcis.EPCIS.EpcisEvent {
 			event.eventTime = this.getFirstElementIfExists(object['eventTime'], undefined);
 			event.recordTime = this.getFirstElementIfExists(object['recordTime'], undefined);
 			event.eventTimeZoneOffset = this.getFirstElementIfExists(object['eventTimeZoneOffset'], undefined);

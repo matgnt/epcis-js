@@ -21,6 +21,11 @@ describe('Aggregation events with quantity list', () => {
         done();
     });
 
+    it('check type', (done) => {
+		assert.ok(events.aggregationEvents[0].type === 'AggregationEvent');
+        done();
+    });
+
     it('check childEPCs', (done) => {
 		assert.ok(events.aggregationEvents[0].childEPCs.length === 3);
         assert.equal(events.aggregationEvents[0].childEPCs[0], 'urn:epc:id:sgtin:0614141.107340.1');
