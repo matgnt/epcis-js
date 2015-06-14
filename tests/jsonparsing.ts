@@ -17,9 +17,7 @@ describe('Parse json string back to our EPCIS objects', function () {
         sleep.sleep(3);
         
         // parse it back
-        var event2 = new epcis.EPCIS.EpcisEvent();
-        event2.loadFromJson(str);
-        var date2 = new Date();
+        var event2 = epcis.EPCIS.EpcisEvent.loadFromJson(str);
 
         assert.equal(event2.type, 'DummyEvent');
         var str1 = event2.eventTime.toISOString();
