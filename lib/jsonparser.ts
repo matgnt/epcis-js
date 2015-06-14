@@ -6,20 +6,18 @@ export module EPCIS {
 		static parseObj(obj: Object) : epcis.EPCIS.EpcisEvent {
 			if(EpcisJsonParser.isEvent(obj)) {
 				if(obj['type'] === 'AggregationEvent') {
-					var agg = new epcis.EPCIS.AggregationEvent();
-					agg.loadFromObj(obj);
+					var agg = epcis.EPCIS.AggregationEvent.loadFromObj(obj);
 					return agg;
 				} else if(obj['type'] === 'TransformationEvent') {
-					var trans = new epcis.EPCIS.TransformationEvent();
-					trans.loadFromObj(obj);
+					var trans = epcis.EPCIS.TransformationEvent.loadFromObj(obj);
 					return trans;
 				}
 			}
 			
 		}
-		static parseJson(json: string) : epcis.EPCIS.Events {
+		static parseJson(json: string) : epcis.EPCIS.EpcisEvent {
 			var obj = JSON.parse(json);
-			return this.parseObj(obj);
+			return EpcisJsonParser.parseObj(obj);
 		}
 
 		// just check whether the given object is a valid event object already
