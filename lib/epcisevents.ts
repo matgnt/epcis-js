@@ -38,6 +38,22 @@ export module EPCIS {
 			this.bizTransaction = event.bizTransaction;
 			this.bizTransactionList = event.bizTransactionList.slice(0); // make a copy
 		}
+
+		loadFromJson(json: string) : void {
+			var obj = JSON.parse(json);
+			this.loadFromObj(obj);
+		}
+		loadFromObj(obj: Object) : void {
+			
+			this.type = obj['type'];
+			this.eventTime = new Date(obj['eventTime']);
+			this.recordTime = new Date(obj['recordTime']);
+			this.eventTimeZoneOffset = obj['eventTimeZoneOffset'];
+			this.bizStep = obj['bizStep'];
+			this.bizTransaction = obj['bizTransaction'];
+			this.bizTransactionList = obj['bizTransactionList'];
+			
+		}
 	}
 
 	export class ObjectEvent extends EpcisEvent {
@@ -57,6 +73,19 @@ export module EPCIS {
 			this.epc = event.epc;
 			this.epcList = event.epcList.slice(0);	// make a copy
 			this.ilmd = event.ilmd;
+		}
+
+		// no polymorphism, so we have to implement it again
+		loadFromJson(json: string) : void {
+			var obj = JSON.parse(json);
+			this.loadFromObj(json);
+		}
+		loadFromObj(obj: Object) : void {
+			super.loadFromObj(obj);
+			this.action = obj['action'];
+			this.epc = obj['epc'];
+			this.epcList = obj['epcList'];
+			this.ilmd = obj['ilmd'];
 		}
 	}
 
@@ -82,6 +111,18 @@ export module EPCIS {
 			this.parentID = event.parentID;
 			this.childEPCs = event.childEPCs.slice(0);
 			this.childQuantityList = event.childQuantityList.slice(0);
+		}
+
+		loadFromJson(json: string) : void {
+			var obj = JSON.parse(json);
+			this.loadFromObj(json);
+		}
+		loadFromObj(obj: Object) : void {
+			super.loadFromObj(obj);
+			this.action = obj['action'];
+			this.parentID = obj['parentID'];
+			this.childEPCs = obj['childEPCs'];
+			this.childQuantityList = obj['childQuantityList'];
 		}
 
 	}
@@ -110,6 +151,19 @@ export module EPCIS {
 			}
 			this.parentID = event.parentID;
 		}
+
+		loadFromJson(json: string) : void {
+			var obj = JSON.parse(json);
+			this.loadFromObj(json);
+		}
+		loadFromObj(obj: Object) : void {
+			super.loadFromObj(obj);
+			this.action = obj['action'];
+			this.epc = obj['epc'];
+			this.quantityList = obj['quantityList'];
+			this.parentID = obj['parentID'];
+		}
+
 	}
 
 	export class TransformationEvent extends EpcisEvent {
@@ -129,6 +183,16 @@ export module EPCIS {
 			super.cloneFrom(event);
 			this.ilmd = event.ilmd;
 		}
+		loadFromJson(json: string) : void {
+			var obj = JSON.parse(json);
+			this.loadFromObj(json);
+		}
+		loadFromObj(obj: Object) : void {
+			super.loadFromObj(obj);
+			this.ilmd = obj['ilmd'];
+			this.transformationID = obj['transformationID'];
+		}
+
 	}
 	
 	// helper classes
