@@ -12,7 +12,8 @@
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-ts": "^4.1.0"
+    "grunt-ts": "^4.1.0",
+    "sleep": "^2.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
