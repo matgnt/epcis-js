@@ -7,10 +7,12 @@ export module EPCIS {
 			if(EpcisJsonParser.isEvent(obj)) {
 				if(obj['type'] === 'AggregationEvent') {
 					var agg = new epcis.EPCIS.AggregationEvent();
-					return agg.loadFromObj(obj);
+					agg.loadFromObj(obj);
+					return agg;
 				} else if(obj['type'] === 'TransformationEvent') {
 					var trans = new epcis.EPCIS.TransformationEvent();
-					return trans.loadFromObj(obj);
+					trans.loadFromObj(obj);
+					return trans;
 				}
 			}
 			
