@@ -26,17 +26,21 @@ export module EPCIS {
 			this.type = 'EpcisEvent';
 		}
 
-		cloneFrom(event: EpcisEvent) : void {
-			this.type = event.type;
-			this.eventTime = event.eventTime;
-			this.recordTime = event.recordTime;
-			this.eventTimeZoneOffset = event.eventTimeZoneOffset;
-			this.bizStep = event.bizStep;
-			this.disposition = event.disposition;
-			this.readPoint = event.readPoint;
-			this.bizLocation = event.bizLocation;
-			this.bizTransaction = event.bizTransaction;
-			this.bizTransactionList = event.bizTransactionList.slice(0); // make a copy
+		static cloneFrom(event: EpcisEvent) : EpcisEvent {
+			var result:EpcisEvent = new EpcisEvent();
+
+			result.type = event.type;
+			result.eventTime = event.eventTime;
+			result.recordTime = event.recordTime;
+			result.eventTimeZoneOffset = event.eventTimeZoneOffset;
+			result.bizStep = event.bizStep;
+			result.disposition = event.disposition;
+			result.readPoint = event.readPoint;
+			result.bizLocation = event.bizLocation;
+			result.bizTransaction = event.bizTransaction;
+			result.bizTransactionList = event.bizTransactionList.slice(0); // make a copy
+
+			return result;
 		}
 
 		static loadFromJson(json: string) : EpcisEvent {
@@ -45,7 +49,6 @@ export module EPCIS {
 		}
 		static loadFromObj(obj: Object) : EpcisEvent {
 			var result = new EpcisEvent();
-
 			result.type = obj['type'];
 			result.eventTime = new Date(obj['eventTime']);
 			result.recordTime = new Date(obj['recordTime']);
@@ -53,7 +56,6 @@ export module EPCIS {
 			result.bizStep = obj['bizStep'];
 			result.bizTransaction = obj['bizTransaction'];
 			result.bizTransactionList = obj['bizTransactionList'];
-
 			return result;
 		}
 	}
@@ -69,12 +71,13 @@ export module EPCIS {
 			this.type = 'ObjectEvent';
 		}
 
-		cloneFrom(event: ObjectEvent) : void {
-			super.cloneFrom(event);
-			this.action = event.action;
-			this.epc = event.epc;
-			this.epcList = event.epcList.slice(0);	// make a copy
-			this.ilmd = event.ilmd;
+		static cloneFrom(event: ObjectEvent) : ObjectEvent {
+			var result:ObjectEvent = <ObjectEvent>EpcisEvent.cloneFrom(event);
+			result.action = event.action;
+			result.epc = event.epc;
+			result.epcList = event.epcList.slice(0);	// make a copy
+			result.ilmd = event.ilmd;
+			return result;
 		}
 
 		static loadFromJson(json: string) : ObjectEvent {
@@ -109,12 +112,13 @@ export module EPCIS {
 			this.type = 'AggregationEvent';
 		}
 
-		cloneFrom(event: AggregationEvent) : void {
-			super.cloneFrom(event);
-			this.action = event.action;
-			this.parentID = event.parentID;
-			this.childEPCs = event.childEPCs.slice(0);
-			this.childQuantityList = event.childQuantityList.slice(0);
+		static cloneFrom(event: AggregationEvent) : AggregationEvent {
+			var result:AggregationEvent = <AggregationEvent>EpcisEvent.cloneFrom(event);
+			result.action = event.action;
+			result.parentID = event.parentID;
+			result.childEPCs = event.childEPCs.slice(0);
+			result.childQuantityList = event.childQuantityList.slice(0);
+			return result;
 		}
 
 		static loadFromJson(json: string) : AggregationEvent {
@@ -146,17 +150,18 @@ export module EPCIS {
 			this.type = 'TransactionEvent';
 		}
 
-		cloneFrom(event: TransactionEvent) : void {
-			super.cloneFrom(event);
-			this.action = event.action;
-			this.epc = event.epc;
+		static cloneFrom(event: TransactionEvent) : TransactionEvent {
+			var result:TransactionEvent = <TransactionEvent>EpcisEvent.cloneFrom(event);
+			result.action = event.action;
+			result.epc = event.epc;
 			if(event.epcList) {
-				this.epcList = event.epcList.slice(0);
+				result.epcList = event.epcList.slice(0);
 			}
 			if(event.quantityList) {
-				this.quantityList = event.quantityList.slice(0);
+				result.quantityList = event.quantityList.slice(0);
 			}
-			this.parentID = event.parentID;
+			result.parentID = event.parentID;
+			return result;
 		}
 
 		static loadFromJson(json: string) : TransactionEvent {
@@ -189,9 +194,10 @@ export module EPCIS {
 			this.type = 'TransformationEvent';
 		}
 
-		cloneFrom(event: TransformationEvent) : void {
-			super.cloneFrom(event);
-			this.ilmd = event.ilmd;
+		cloneFrom(event: TransformationEvent) : TransformationEvent {
+			var result:TransformationEvent = <TransformationEvent> EpcisEvent.cloneFrom(event);
+			result.ilmd = event.ilmd;
+			return result;
 		}
 		static loadFromJson(json: string) : TransformationEvent {
 			var obj = JSON.parse(json);
