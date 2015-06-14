@@ -47,15 +47,40 @@ export module EPCIS {
 			var obj = JSON.parse(json);
 			return EpcisEvent.loadFromObj(obj);
 		}
+		
+		// all the check look a little wired, but node mongodb driver saves even 'undefined' as 'null' values
+		// that we want to avoid with just setting a property if it's really available!
+		// any better idea?
 		static loadFromObj(obj: Object) : EpcisEvent {
 			var result = new EpcisEvent();
-			result.type = obj['type'];
-			result.eventTime = new Date(obj['eventTime']);
-			result.recordTime = new Date(obj['recordTime']);
-			result.eventTimeZoneOffset = obj['eventTimeZoneOffset'];
-			result.bizStep = obj['bizStep'];
-			result.bizTransaction = obj['bizTransaction'];
-			result.bizTransactionList = obj['bizTransactionList'];
+			var tmp = obj['type'];
+			if(tmp) {
+				result.type = tmp;
+			} 
+			tmp = obj['eventTime'];
+			if (tmp) {
+				result.eventTime = 	new Date(tmp);
+			}
+			tmp = obj['recordTime'];
+			if(tmp) {
+				result.recordTime = new Date(tmp);
+			}
+			tmp = obj['eventTimeZoneOffset'];
+			if(tmp) {
+				result.eventTimeZoneOffset = tmp;
+			}
+			tmp = obj['bizStep'];
+			if(tmp) {
+				result.bizStep = tmp;
+			}
+			tmp = obj['bizTransaction'];
+			if(tmp) {
+				result.bizTransaction = tmp;
+			}
+			tmp = obj['bizTransactionList'];
+			if(tmp) {
+				result.bizTransactionList = tmp;
+			}
 			return result;
 		}
 	}
@@ -86,12 +111,22 @@ export module EPCIS {
 		}
 		static loadFromObj(obj: Object) : ObjectEvent {
 			var result:ObjectEvent = <ObjectEvent>EpcisEvent.loadFromObj(obj);
-
-			result.action = obj['action'];
-			result.epc = obj['epc'];
-			result.epcList = obj['epcList'];
-			result.ilmd = obj['ilmd'];
-
+			var tmp = obj['action'];
+			if(tmp) {
+				result.action = tmp;
+			}
+			tmp = obj['epc'];
+			if(tmp) {
+				result.epc = tmp;
+			}
+			tmp =  obj['epcList'];
+			if(tmp) {
+				result.epcList = tmp;
+			}
+			tmp = obj['ilmd'];
+			if(tmp) {
+				result.ilmd = tmp;
+			}
 			return result;
 		}
 	}
@@ -127,12 +162,22 @@ export module EPCIS {
 		}
 		static loadFromObj(obj: Object) : AggregationEvent {
 			var result:AggregationEvent = <AggregationEvent>EpcisEvent.loadFromObj(obj);
-
-			result.action = obj['action'];
-			result.parentID = obj['parentID'];
-			result.childEPCs = obj['childEPCs'];
-			result.childQuantityList = obj['childQuantityList'];
-
+			var tmp = obj['action'];
+			if(tmp) {
+				result.action = tmp;
+			}
+			tmp = obj['parentID'];
+			if(tmp) {
+				result.parentID = tmp;
+			}
+			tmp = obj['childEPCs'];
+			if(tmp) {
+				result.childEPCs = tmp;
+			}
+			tmp = obj['childQuantityList'];
+			if(tmp) {
+				result.childQuantityList = tmp;
+			}
 			return result;
 		}
 
@@ -170,12 +215,22 @@ export module EPCIS {
 		}
 		static loadFromObj(obj: Object) : TransactionEvent {
 			var result:TransactionEvent = <TransactionEvent>EpcisEvent.loadFromObj(obj);
-
-			result.action = obj['action'];
-			result.epc = obj['epc'];
-			result.quantityList = obj['quantityList'];
-			result.parentID = obj['parentID'];
-
+			var tmp = obj['action'];
+			if(tmp) {
+				result.action = tmp;
+			}
+			tmp = obj['epc'];
+			if(tmp) {
+				result.epc = tmp;
+			}
+			tmp = obj['quantityList'];
+			if(tmp) {
+				result.quantityList = tmp;
+			}
+			tmp = obj['parentID'];
+			if(tmp) {
+				result.parentID = tmp;
+			}
 			return result;
 		}
 
@@ -205,10 +260,14 @@ export module EPCIS {
 		}
 		static loadFromObj(obj: Object) : TransformationEvent {
 			var result:TransformationEvent = <TransformationEvent>EpcisEvent.loadFromObj(obj);
-
-			result.ilmd = obj['ilmd'];
-			result.transformationID = obj['transformationID'];
-
+			var tmp = obj['ilmd'];
+			if(tmp) {
+				result.ilmd = tmp;
+			}
+			tmp = obj['transformationID'];
+			if(tmp) {
+				result.transformationID = tmp;
+			}
 			return result;
 		}
 
