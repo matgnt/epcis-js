@@ -39,20 +39,22 @@ export module EPCIS {
 			this.bizTransactionList = event.bizTransactionList.slice(0); // make a copy
 		}
 
-		loadFromJson(json: string) : void {
+		static loadFromJson(json: string) : EpcisEvent {
 			var obj = JSON.parse(json);
-			this.loadFromObj(obj);
+			return EpcisEvent.loadFromObj(obj);
 		}
-		loadFromObj(obj: Object) : void {
-			
-			this.type = obj['type'];
-			this.eventTime = new Date(obj['eventTime']);
-			this.recordTime = new Date(obj['recordTime']);
-			this.eventTimeZoneOffset = obj['eventTimeZoneOffset'];
-			this.bizStep = obj['bizStep'];
-			this.bizTransaction = obj['bizTransaction'];
-			this.bizTransactionList = obj['bizTransactionList'];
-			
+		static loadFromObj(obj: Object) : EpcisEvent {
+			var result = new EpcisEvent();
+
+			result.type = obj['type'];
+			result.eventTime = new Date(obj['eventTime']);
+			result.recordTime = new Date(obj['recordTime']);
+			result.eventTimeZoneOffset = obj['eventTimeZoneOffset'];
+			result.bizStep = obj['bizStep'];
+			result.bizTransaction = obj['bizTransaction'];
+			result.bizTransactionList = obj['bizTransactionList'];
+
+			return result;
 		}
 	}
 
@@ -75,17 +77,19 @@ export module EPCIS {
 			this.ilmd = event.ilmd;
 		}
 
-		// no polymorphism, so we have to implement it again
-		loadFromJson(json: string) : void {
+		static loadFromJson(json: string) : ObjectEvent {
 			var obj = JSON.parse(json);
-			this.loadFromObj(json);
+			return ObjectEvent.loadFromObj(json);
 		}
-		loadFromObj(obj: Object) : void {
-			super.loadFromObj(obj);
-			this.action = obj['action'];
-			this.epc = obj['epc'];
-			this.epcList = obj['epcList'];
-			this.ilmd = obj['ilmd'];
+		static loadFromObj(obj: Object) : ObjectEvent {
+			var result:ObjectEvent = <ObjectEvent>EpcisEvent.loadFromObj(obj);
+
+			result.action = obj['action'];
+			result.epc = obj['epc'];
+			result.epcList = obj['epcList'];
+			result.ilmd = obj['ilmd'];
+
+			return result;
 		}
 	}
 
@@ -113,16 +117,19 @@ export module EPCIS {
 			this.childQuantityList = event.childQuantityList.slice(0);
 		}
 
-		loadFromJson(json: string) : void {
+		static loadFromJson(json: string) : AggregationEvent {
 			var obj = JSON.parse(json);
-			this.loadFromObj(json);
+			return AggregationEvent.loadFromObj(json);
 		}
-		loadFromObj(obj: Object) : void {
-			super.loadFromObj(obj);
-			this.action = obj['action'];
-			this.parentID = obj['parentID'];
-			this.childEPCs = obj['childEPCs'];
-			this.childQuantityList = obj['childQuantityList'];
+		static loadFromObj(obj: Object) : AggregationEvent {
+			var result:AggregationEvent = <AggregationEvent>EpcisEvent.loadFromObj(obj);
+
+			result.action = obj['action'];
+			result.parentID = obj['parentID'];
+			result.childEPCs = obj['childEPCs'];
+			result.childQuantityList = obj['childQuantityList'];
+
+			return result;
 		}
 
 	}
@@ -152,16 +159,19 @@ export module EPCIS {
 			this.parentID = event.parentID;
 		}
 
-		loadFromJson(json: string) : void {
+		static loadFromJson(json: string) : TransactionEvent {
 			var obj = JSON.parse(json);
-			this.loadFromObj(json);
+			return TransactionEvent.loadFromObj(json);
 		}
-		loadFromObj(obj: Object) : void {
-			super.loadFromObj(obj);
-			this.action = obj['action'];
-			this.epc = obj['epc'];
-			this.quantityList = obj['quantityList'];
-			this.parentID = obj['parentID'];
+		static loadFromObj(obj: Object) : TransactionEvent {
+			var result:TransactionEvent = <TransactionEvent>EpcisEvent.loadFromObj(obj);
+
+			result.action = obj['action'];
+			result.epc = obj['epc'];
+			result.quantityList = obj['quantityList'];
+			result.parentID = obj['parentID'];
+
+			return result;
 		}
 
 	}
@@ -183,14 +193,17 @@ export module EPCIS {
 			super.cloneFrom(event);
 			this.ilmd = event.ilmd;
 		}
-		loadFromJson(json: string) : void {
+		static loadFromJson(json: string) : TransformationEvent {
 			var obj = JSON.parse(json);
-			this.loadFromObj(json);
+			return TransformationEvent.loadFromObj(json);
 		}
-		loadFromObj(obj: Object) : void {
-			super.loadFromObj(obj);
-			this.ilmd = obj['ilmd'];
-			this.transformationID = obj['transformationID'];
+		static loadFromObj(obj: Object) : TransformationEvent {
+			var result:TransformationEvent = <TransformationEvent>EpcisEvent.loadFromObj(obj);
+
+			result.ilmd = obj['ilmd'];
+			result.transformationID = obj['transformationID'];
+
+			return result;
 		}
 
 	}
