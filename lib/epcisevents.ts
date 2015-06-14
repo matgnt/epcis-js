@@ -11,8 +11,8 @@ export module EPCIS {
 
 	export class EpcisEvent {
 		type: string;
-		eventTime: string;
-		recordTime: string;
+		eventTime: Date;
+		recordTime: Date;
 		eventTimeZoneOffset: string;
 		bizStep: string;
 		disposition: string;
