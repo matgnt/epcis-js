@@ -2,30 +2,27 @@
   "name": "epcis-js",
   "version": "0.1.0",
   "description": "Library to convert EPCIS messages into JS",
-  "main": "epcis.js",
-  "directories": {
-    "test": "tests"
-  },
+  "main": "build/epcis.js",
   "dependencies": {
     "assert": "^1.3.0",
-    "xml2js": "^0.4.8"
+    "xml2js": "^0.4.15"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-ts": "^4.1.0",
-    "sleep": "^2.0.0"
+    "grunt-ts": "^5.2.0",
+    "grunt-contrib-copy": "^0.8.2",
+    "sleep": "^3.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha build/tests/"
   },
   "keywords": [
     "EPCIS"
   ],
   "files": [
-    "lib/",
-    "tests/",
-    "epcis.js",
-    "epcis.ts"
+    "build/",
+    "LICENSE",
+    "Readme.md"
   ],
   "author": "Matthias Günther",
   "license": "MIT"

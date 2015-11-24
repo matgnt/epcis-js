@@ -6,10 +6,15 @@ module.exports = function (grunt) {
           module: "commonjs"
         },
         watch: ".",
-        src: ["**/*.ts", "!node_modules/**/*.ts"]
+        src: ["**/*.ts", "!node_modules/**/*.ts"],
+        dest: ["build/"]
       }
+    },
+    copy: {
+      main: {src: 'testdata/*', dest: 'build/'}
     }
   });
   grunt.loadNpmTasks("grunt-ts");
-  grunt.registerTask("default", ["ts"]);
+  grunt.loadNpmTasks("grunt-contrib-copy");
+  grunt.registerTask("default", ["ts", "copy"]);
 };
